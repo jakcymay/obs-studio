@@ -64,35 +64,6 @@ struct droptest_info {
 };
 #endif
 
-struct ffmpeg_data {
-	AVStream           *video;
-	AVStream           *audio;
-	AVCodec            *acodec;
-	AVCodec            *vcodec;
-	AVFormatContext    *output;
-	struct SwsContext  *swscale;
-
-	int64_t            total_frames;
-	AVPicture          dst_picture;
-	AVFrame            *vframe;
-	int                frame_size;
-
-	uint64_t           start_timestamp;
-
-	int64_t            total_samples;
-	uint32_t           audio_samplerate;
-	enum audio_format  audio_format;
-	size_t             audio_planes;
-	size_t             audio_size;
-	struct circlebuf   excess_frames[MAX_AV_PLANES];
-	uint8_t            *samples[MAX_AV_PLANES];
-	AVFrame            *aframe;
-
-	struct ffmpeg_cfg  config;
-
-	bool               initialized;
-};
-
 struct rtmp_stream {
 	obs_output_t     *output;
 
