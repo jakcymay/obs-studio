@@ -2,6 +2,10 @@ project(obs-outputs)
 
 option(USE_SSL "Enable rtmps support with OpenSSL" OFF)
 
+find_package(FFmpeg REQUIRED
+	COMPONENTS avcodec avfilter avdevice avutil swscale avformat swresample)
+include_directories(${FFMPEG_INCLUDE_DIRS})
+
 if (USE_SSL)
 	find_package(SSL QUIET)
 	find_package(ZLIB QUIET)
