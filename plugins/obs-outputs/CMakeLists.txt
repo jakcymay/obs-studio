@@ -46,7 +46,8 @@ set(obs-outputs_HEADERS
 	obs-output-ver.h)
 set(obs-outputs_SOURCES
 	obs-outputs.c
-	rtmp-stream.c)
+	rtmp-stream.c
+	ffmpeg-helper.c)
 	
 add_library(obs-outputs MODULE
 	${obs-outputs_SOURCES}
@@ -55,6 +56,8 @@ target_link_libraries(obs-outputs
 	libobs
 	${SSL_LIBRARIES}
 	${ZLIB_LIBRARIES}
-	${obs-outputs_PLATFORM_DEPS})
+	libff
+	${obs-ffmpeg_PLATFORM_DEPS}
+	${FFMPEG_LIBRARIES})
 
 install_obs_plugin_with_data(obs-outputs data)
